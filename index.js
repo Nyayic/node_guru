@@ -19,8 +19,8 @@ app.listen(3000, function(){
 
 app.get('/', function(req, res){
     res.send('HELLO WORLD')
-    res.send('This is my first node app')
+    
 })
 
 
-/*app.get('/', (request, response) => response.send('This is my first node app'))*/
+app.get('/about', (request, response) => response.send('THIS IS THE ABOUT US PAGE'))
