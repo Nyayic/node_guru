@@ -23,4 +23,30 @@ app.get('/', function(req, res){
 })
 
 
-app.get('/about', (request, response) => response.send('THIS IS THE ABOUT US PAGE'))
+app.get('/get', (request, response) => response.send('THIS IS A GET REQUEST'))
+
+app.post('/post', (request, response) => response.send('THIS IS A POST REQUEST'))
+
+app.put('/put', (request, response) => response.send('THIS IS A PUT REQUEST'))
+
+//app.send('/send', (request, response) => response.send('THIS A SEND REQUEST'))
+
+app.delete('/user', (request, response) => {
+    response.send('THIS IS DELETE REQUEST at /user')
+})
+
+
+//to display name on browser
+app.get('/users/:name', (request, response) => {
+    response.send('Hello! ' + request.params.name)
+})
+
+//for custom error messages - all other oe ome before this 
+app.get('*', (request, response) => {
+    response.send('OPPS! THERE IS AN ERROR')
+})
+
+
+
+
+
