@@ -4,6 +4,12 @@
  * */
 const express = require('express');
 const app = express(); //an app of type express
+const path = require('path')
+
+//using pug
+app.set('view engine','pug')
+app.set('views', path.join(__dirname, 'views'))
+
 
 /**use listen method to  create a server so browser can listen - the 3000:is a port*/
 app.listen(3000, function(){
@@ -17,33 +23,49 @@ app.listen(3000, function(){
  * callback: is a function that tells the server what to do when path is matched -- it takes 2 arguments i.e request object & response
 */
 
+
+//PUG
+/*app.post('/register', (req, res) => {
+    res.render('index')
+})*/
+
+
 app.get('/', function(req, res){
     res.send('HELLO WORLD')
     
 })
+//render form
+app.get('/views', (req,res) => {
+    res.render('register')
+})
+
+app.get('/users', (req, res) => {
+    res.send('THIS IS A class of ' + req.query.class + ' cohort ' +req.query.cohort)
+})
 
 
-app.get('/get', (request, response) => response.send('THIS IS A GET REQUEST'))
 
-app.post('/post', (request, response) => response.send('THIS IS A POST REQUEST'))
+app.get('/get', (req, res) => res.send('THIS IS A GET REQUEST'))
 
-app.put('/put', (request, response) => response.send('THIS IS A PUT REQUEST'))
+app.post('/post', (req, res) => res.send('THIS IS A POST REQUEST'))
 
-//app.send('/send', (request, response) => response.send('THIS A SEND REQUEST'))
+app.put('/put', (req, res) => res.send('THIS IS A PUT REQUEST'))
 
-app.delete('/user', (request, response) => {
-    response.send('THIS IS DELETE REQUEST at /user')
+//app.send('/send', (req, res) => res.send('THIS A SEND REQUEST'))
+
+app.delete('/user', (req, res) => {
+    res.send('THIS IS DELETE REQUEST at /user')
 })
 
 
 //to display name on browser
-app.get('/users/:name', (request, response) => {
-    response.send('Hello! ' + request.params.name)
+app.get('/users/:name', (req, res) => {
+    res.send('Hello! ' + request.params.name)
 })
 
 //for custom error messages - all other oe ome before this 
-app.get('*', (request, response) => {
-    response.send('OPPS! THERE IS AN ERROR')
+app.get('*', (req, res) => {
+    res.send('OPPS! THERE IS AN ERROR')
 })
 
 

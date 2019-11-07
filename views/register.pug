@@ -1,0 +1,52 @@
+doctype html
+html
+    head
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
+        title First PUG form
+    body
+        div.row.justify-content-center
+            div.col-md-6
+                header.card-header
+                    a.float-right.btn.btn-outline-primary Log in
+                    h4.card-title REGISTER
+                div.card-body
+                    div.form-row
+                        div.col-sm-6.form-group
+                            label First Name:
+                            input.form-control(name="first_name",type="text", placeholder="Enter your first name")
+                        
+                        div.col-sm-6.form-group
+                            label Last Name:
+                            input.form-control(name="last_name",type="text",placeholder="Enter your last name")
+                                
+                    div.form-group    
+                        label Email address:
+                        input.form-control(name="email",type="email",placeholder="Enter your Email")
+                        small We'll never share your email with anyone else
+
+                    div.form-group
+                        label.form-check.form-check-inline
+                            input.form-check-input(type="radio" name="gender" value="option1")
+                            span.form-check-label Male  
+                        label.form-check.form-check-inline
+                            input.form-check-input(type="radio" name="gender" value="option2")
+                            span.form-check-label Female
+                        
+                    div.form-row
+                        div.col-md-6.form-group    
+                            label City:
+                            input.form-control(name="city" type="text")
+
+                        div.col-md-6.form-group    
+                                label Country:
+                                select.form-control(name="country" type="text")
+                                    option(value="") Choose...
+                                    option(value="") Uzbekistan
+                                    option(value="") Russia
+                                    option(value="" selected="") United States
+                                    option(value="") India
+                                    option(value="") Afghanistan
+                                    option(value="") Uganda
+                        
+                        div.form-group
+                        input.btn.btn-primary.btn-block(type="submit", value="Register")
