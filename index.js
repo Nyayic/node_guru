@@ -4,12 +4,14 @@
  * */
 const express = require('express');
 const app = express(); //an app of type express
+const bodyParser = require('body-parser')
 const path = require('path')
 
 //using pug
 app.set('view engine','pug')
 app.set('views', path.join(__dirname, 'views'))
 
+app.use(bodyParser.urlencoded({extended:true})) //calls body parser
 
 /**use listen method to  create a server so browser can listen - the 3000:is a port*/
 app.listen(3000, function(){
@@ -34,10 +36,24 @@ app.get('/', function(req, res){
     res.send('HELLO WORLD')
     
 })
-//render form
-app.get('/views', (req,res) => {
+//render  your pug form   -- a get method first, 
+app.get('/views', (req, res) => {
+    //console.log('body', req.body)
+    //console.log('Query Params', req.query)
     res.render('register')
 })
+
+//post the form
+app.post('/views', (req, res) => {
+    console.log('body', req.body)
+    console.log('Query Params', req.query)
+    //console.log('Your Form has been posted')
+   
+})
+app.post('/welcome', (req, res) => {
+    res.send('Hello '+ req.body.first_name + ' Welcome to Node.js')
+})
+
 
 app.get('/users', (req, res) => {
     res.send('THIS IS A class of ' + req.query.class + ' cohort ' +req.query.cohort)
@@ -59,7 +75,7 @@ app.delete('/user', (req, res) => {
 
 
 //to display name on browser
-app.get('/users/:name', (req, res) => {
+app.get('/users/:name', (req, res) => { //path params
     res.send('Hello! ' + request.params.name)
 })
 
