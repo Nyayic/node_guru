@@ -7,6 +7,19 @@ const app = express(); //an app of type express
 const bodyParser = require('body-parser')
 const path = require('path')
 
+//mongodb connection
+var mongoose = require("mongoose");
+mongoose.Promise = global.Promise;
+mongoose.connect("mongodb://localhost:27017/node-demo");
+
+//schema db
+var nameSchema = new mongoose.Schema({
+    firstName: String,
+    lastName: String
+});
+//create db model
+var User = mongoose.model("User", nameSchema)
+
 //using pug
 app.set('view engine','pug')
 app.set('views', path.join(__dirname, 'views'))
@@ -36,7 +49,7 @@ app.get('/', function(req, res){
     
 })
 //render  your pug form   -- a get method first, 
-app.get('/views', (req, res) => {
+app.get('/register', (req, res) => {
     //console.log('body', req.body)
     //console.log('Query Params', req.query)
     res.render('register')
@@ -45,8 +58,15 @@ app.get('/views', (req, res) => {
 app.get('/about', (req, res) => {
     //console.log('body', req.body)
     //console.log('Query Params', req.query)
+    res.render('about')
+})
+
+app.get('/index', (req, res) => {
+    //console.log('body', req.body)
+    //console.log('Query Params', req.query)
     res.render('index')
 })
+
 
 
 //post the form
