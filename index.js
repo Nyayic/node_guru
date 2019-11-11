@@ -31,7 +31,6 @@ app.listen(3000, function(){
     res.render('index')
 })*/
 
-
 app.get('/', function(req, res){
     res.send('HELLO WORLD')
     
@@ -42,6 +41,13 @@ app.get('/views', (req, res) => {
     //console.log('Query Params', req.query)
     res.render('register')
 })
+
+app.get('/about', (req, res) => {
+    //console.log('body', req.body)
+    //console.log('Query Params', req.query)
+    res.render('index')
+})
+
 
 //post the form
 app.post('/views', (req, res) => {
