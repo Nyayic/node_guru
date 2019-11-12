@@ -10,7 +10,7 @@ block appContent
                     a.float-right.btn.btn-outline-primary Log in
                     h4.card-title REGISTER
                 div.card-body
-                    form(method="POST" action="/welcome")
+                    form(method="POST" )
                         div.form-row
                             div.col-sm-6.form-group
                                 label First Name:
@@ -27,10 +27,10 @@ block appContent
 
                         div.form-group
                             label.form-check.form-check-inline
-                                input.form-check-input(type="radio" name="gender" value="option1")
+                                input.form-check-input(type="radio" name="gender" value="Male")
                                 span.form-check-label Male  
                             label.form-check.form-check-inline
-                                input.form-check-input(type="radio" name="gender" value="option2")
+                                input.form-check-input(type="radio" name="gender" value="Female")
                                 span.form-check-label Female
                             
                         div.form-row
@@ -42,12 +42,12 @@ block appContent
                                     label Country:
                                     select.form-control(name="country" type="text")
                                         option(value="") Choose...
-                                        option(value="") Uzbekistan
-                                        option(value="") Russia
-                                        option(value="" selected="") United States
-                                        option(value="") India
-                                        option(value="") Afghanistan
-                                        option(value="") Uganda
+                                        option(value="Uzbekistan") Uzbekistan
+                                        option(value="Russia") Russia
+                                        option(value="United States" selected="") United States
+                                        option(value="India") India
+                                        option(value="Afghanistan") Afghanistan
+                                        option(value="Uganda") Uganda
 
                         div.form-row
                             div.col.form-group

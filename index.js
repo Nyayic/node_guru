@@ -7,23 +7,31 @@ const app = express(); //an app of type express
 const bodyParser = require('body-parser')
 const path = require('path')
 
+
 //mongodb connection
+
 var mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/node-demo");
+mongoose.connect("mongodb://localhost:27017/test");
 
 //schema db
 var nameSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String
+    first_name: String,
+    last_name: String,
+    email: String,
+    gender: String,
+    city: String,
+    country: String
 });
 //create db model
 var User = mongoose.model("User", nameSchema)
+
 
 //using pug
 app.set('view engine','pug')
 app.set('views', path.join(__dirname, 'views'))
 
+app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true})) //calls body parser
 
 /**use listen method to  create a server so browser can listen - the 3000:is a port*/
@@ -44,6 +52,8 @@ app.listen(3000, function(){
     res.render('index')
 })*/
 
+
+
 app.get('/', function(req, res){
     res.send('HELLO WORLD')
     
@@ -53,6 +63,19 @@ app.get('/register', (req, res) => {
     //console.log('body', req.body)
     //console.log('Query Params', req.query)
     res.render('register')
+})
+
+
+//database
+app.post("/register", (req, res) => {
+    var myData = new User(req.body);//User is our model - passing data entered
+    myData.save()
+    .then(item => {
+        res.send("Item saved to database");
+      })
+      .catch(err => {
+        res.status(400).send("Unable to save to database");
+      });
 })
 
 app.get('/about', (req, res) => {
@@ -70,15 +93,15 @@ app.get('/index', (req, res) => {
 
 
 //post the form
-app.post('/views', (req, res) => {
-    console.log('body', req.body)
-    console.log('Query Params', req.query)
-    //console.log('Your Form has been posted')
+// app.post('/views', (req, res) => {
+//     console.log('body', req.body)
+//     console.log('Query Params', req.query)
+//     //console.log('Your Form has been posted')
    
-})
-app.post('/welcome', (req, res) => {
-    res.send('Hello '+ req.body.first_name + ' Welcome to Node.js')
-})
+// })
+// app.post('/welcome', (req, res) => {
+//     res.send('Hello '+ req.body.first_name + ' Welcome to Node.js')
+// })
 
 
 app.get('/users', (req, res) => {
