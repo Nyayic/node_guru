@@ -1,0 +1,25 @@
+extends layouts.pug
+block appContent
+    div.row.justify-content-center
+            div.col-md-6
+                header.card-header
+                    a.float-right.btn.btn-outline-primary Log in
+                    h4.card-title REGISTERED USERS
+                table.table
+                    thead.thread-dark
+                        tr
+                            th First Name
+                            th Last Name
+                            th Email ID
+                            th Gender
+                            th City
+                            th Country
+                    tbody
+                        each user in users
+                            tr
+                                td #{user.first_name}
+                                td #{user.last_name}
+                                td #{user.email}
+                                td #{user.gender}
+                                td #{user.city}
+                                td #{user.country}
