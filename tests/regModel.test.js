@@ -23,5 +23,16 @@ describe('registration model test', () => {
              * expect gives you access to a number of "matchers" that let you validate different things. */
 
         })
+        // tear down : some finishing work that need to happen after tests run
+        afterEach(async () => {//so there is nothing in the database, after eah lears the save items
+            try{
+                await Register.deleteMany({})
+            }
+            catch (err) {
+                console.log('database error', +err)
+            }
+            
+
+        })
 
 })
