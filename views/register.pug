@@ -10,15 +10,19 @@ block appContent
                     a.float-right.btn.btn-outline-primary Log in
                     h4.card-title REGISTER
                 div.card-body
-                    form(method="POST" action="/register")
+                    form(method="POST")
                         div.form-row
-                            div.col-sm-6.form-group
+                            div.col-sm-4.form-group
                                 label First Name:
                                 input.form-control(name="first_name",type="text", placeholder="Enter your first name")
                             
-                            div.col-sm-6.form-group
+                            div.col-sm-4.form-group
                                 label Last Name:
                                 input.form-control(name="last_name",type="text",placeholder="Enter your last name")
+
+                            div.col-sm-4.form-group
+                                label User Name:
+                                input.form-control(name="user_name",type="text",placeholder="Enter your user name")
                                     
                         div.form-group    
                             label Email address:

@@ -20,11 +20,11 @@ describe('registration model test', () => {
             const items = await Register.find({}) // to fin the items that has been saved, await to wait for a return
             expect(items.length).toBe(1)
             /**When you're writing tests, you often need to check that values meet certain conditions. 
-             * expect gives you access to a number of "matchers" that let you validate different things. */
+             * expect gives you access to a number of "matchers" that let you validate different things.  its an assertion*/
 
         })
         // tear down : some finishing work that need to happen after tests run
-        afterEach(async () => {//so there is nothing in the database, after eah lears the save items
+        afterEach(async () => {//so there is nothing in the database, after each clears the save items
             try{
                 await Register.deleteMany({})
             }

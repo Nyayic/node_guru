@@ -1,0 +1,21 @@
+extends layouts.pug
+
+block appContent
+ 
+    div.row.justify-content-center
+        div.col-md-6
+            header.card-header
+                a.float-right.btn.btn-outline-primary Log in
+                h4.card-title REGISTER
+            div.card-body
+                form(method="POST" action="/login")
+                    div.form-row
+                        div.col-sm-4.form-group
+                            label User Name:
+                            input.form-control(name="user_name",type="text", placeholder="Enter your user name")
+                        
+                        div.col-sm-4.form-group
+                            label Password:
+                            input.form-control(name="password",type="text",placeholder="Enter your last name")
+                        div.col.form-group
+                            input.btn.btn-primary.btn-block(type="submit", value="Login")

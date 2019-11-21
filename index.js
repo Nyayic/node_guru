@@ -33,7 +33,8 @@ app.use(bodyParser.urlencoded({extended:true})) //calls body parser
 
 //mongoose connection
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://localhost:27017/test",{useNewUrlParser:true});
+mongoose.connect("mongodb://localhost:27017/test",{useNewUrlParser:true, useUnifiedTopology: true});
+mongoose.set('useCreateIndex', true);
 
 
 
@@ -41,6 +42,10 @@ mongoose.connect("mongodb://localhost:27017/test",{useNewUrlParser:true});
 // import  routes
 const registerRoutes = require('./routes/registerRoutes')
 app.use('/register', registerRoutes)
+
+const loginRoutes = require('./routes/loginRoutes')
+app.use('/login', loginRoutes)
+
 
 
 
